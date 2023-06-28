@@ -35,3 +35,11 @@ export class HitCounter extends Construct {
     props.downstream.grantInvoke(this.handler);
   }
 }
+
+// Test in terminal and check dynamoDB to confirm
+// curl https://zjmzxbwqid.execute-api.us-west-2.amazonaws.com/prod/
+// Hello, CDK! You've hit /
+// curl https://zjmzxbwqid.execute-api.us-west-2.amazonaws.com/prod/hello
+// Hello, CDK! You've hit /hello
+// curl https://zjmzxbwqid.execute-api.us-west-2.amazonaws.com/prod/hello/world
+// Hello, CDK! You've hit /hello/world
