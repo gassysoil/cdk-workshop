@@ -15,8 +15,11 @@ exports.handler = async function (event) {
       ExpressionAttributeValues: { ":incr": { N: "1" } },
     })
     .promise();
-
-  //add an attribute "hits" with variable name "incr", the variable "incr" has value of 1
+  // add an attribute "hits" with variable name "incr", the variable "incr" has value of 1
+  // ADD - Adds the specified value to the item, if the attribute does not already exist.
+  // If the attribute does exist, then the behavior of ADD depends on the data type of the attribute:
+  // If the existing attribute is a number, and if Value is also a number, then Value is mathematically added to the existing attribute.
+  // If Value is a negative number, then it is subtracted from the existing attribute.
 
   // call downstream function and capture response
   const resp = await lambda

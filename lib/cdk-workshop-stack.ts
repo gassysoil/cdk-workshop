@@ -13,8 +13,9 @@ export class CdkWorkshopStack extends Stack {
       handler: "hello.handler", // file is "hello", function is "handler"
     });
 
+    // refer to its constructor(scope: Construct, id: string, props: HitCounterProps)
     const helloWithCounter = new HitCounter(this, "HelloHitCounter", {
-      downstream: hello,
+      downstream: hello, //this is the HitCounterProps
     });
 
     // defines an API Gateway REST API resource backed by our "hello" function.
@@ -23,3 +24,11 @@ export class CdkWorkshopStack extends Stack {
     });
   }
 }
+
+// Test in terminal and check dynamoDB to confirm
+// curl https://zjmzxbwqid.execute-api.us-west-2.amazonaws.com/prod/
+// Hello, CDK! You've hit /
+// curl https://zjmzxbwqid.execute-api.us-west-2.amazonaws.com/prod/hello
+// Hello, CDK! You've hit /hello
+// curl https://zjmzxbwqid.execute-api.us-west-2.amazonaws.com/prod/hello/world
+// Hello, CDK! You've hit /hello/world
